@@ -38,12 +38,8 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	// Fabric API. This is technically optional, but you probably want it anyway.
+	// Fabric API
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-
-	// Custom version of Variants-CIT
-	modLocalRuntime "fr.estecka.variantscit:variants-cit:cosmic"
-	modCompileOnly "fr.estecka.variantscit:variants-cit:cosmic"
 
 	// DevAuth
 	modRuntimeOnly("me.djtheredstoner:DevAuth-fabric:1.2.1")
