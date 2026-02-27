@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "cosmic-textures:item/bot-upgrades/fisher_module_fish_type"
+  }
+}
