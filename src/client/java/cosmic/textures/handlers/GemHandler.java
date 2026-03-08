@@ -4,7 +4,6 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
-import net.minecraft.text.Style;
 import net.minecraft.util.Identifier;
 
 import java.util.regex.Pattern;
@@ -23,7 +22,7 @@ public class GemHandler {
         String cosmicItemType = nbt.getString("cosmicItem").orElse("");
 
         // Random Mythic Gems
-        if (nbt.getString("mysteryChest").orElse("").contains("special_random_mythic_gem")) {
+        if (nbt.getString("mysteryChest").orElse("").contains("special_random_mythic_gem") && !nbt.getString("mysteryChest").orElse("").equals("special_random_mythic_gem_stone_diamond_static")) {
             if (nbt.getString("mysteryChest").orElse("").contains("stone")) return Identifier.of("cosmic-textures", "gems/stone_gem_boss");
             if (nbt.getString("mysteryChest").orElse("").contains("iron")) return Identifier.of("cosmic-textures", "gems/iron_gem_boss");
             if (nbt.getString("mysteryChest").orElse("").contains("diamond")) return Identifier.of("cosmic-textures", "gems/diamond_gem_boss");

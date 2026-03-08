@@ -16,7 +16,7 @@ public class DustHandler {
                 default -> Identifier.of("cosmic-textures", "dust/z_stone_dust");
             };
 
-            case 3 -> switch (nbt.getInt("chanceIncrease").orElse(0)) {
+            case 4 -> switch (nbt.getInt("chanceIncrease").orElse(0)) {
                 case 1 -> Identifier.of("cosmic-textures", "dust/iron_dust_1");
                 case 2 -> Identifier.of("cosmic-textures", "dust/iron_dust_2");
                 case 3 -> Identifier.of("cosmic-textures", "dust/iron_dust_3");

@@ -21,7 +21,7 @@ public class FarmingRecipeHandler {
                     case "TORCHFLOWER" -> Identifier.of("cosmic-textures", "recipes/torchflower_frag");
                     case "BAMBOO" -> Identifier.of("cosmic-textures", "recipes/bamboo_frag");
                     case "MELONS" -> Identifier.of("cosmic-textures", "recipes/melon_frag");
-                    case "BEETROOT" -> Identifier.of("cosmic-textures", "recipes/beetroot_frag");
+                    case "BEET_ROOT" -> Identifier.of("cosmic-textures", "recipes/beetroot_frag");
                     case "TWISTING_VINE" -> Identifier.of("cosmic-textures", "recipes/twisting_vines_frag");
                     case "PUMPKINS" -> Identifier.of("cosmic-textures", "recipes/pumpkin_frag");
                     case "NETHER_WART" -> Identifier.of("cosmic-textures", "recipes/nether_wart_frag");
@@ -40,7 +40,7 @@ public class FarmingRecipeHandler {
                     case "TORCHFLOWER" -> Identifier.of("cosmic-textures", "recipes/torchflower_recipe");
                     case "BAMBOO" -> Identifier.of("cosmic-textures", "recipes/bamboo_recipe");
                     case "MELONS" -> Identifier.of("cosmic-textures", "recipes/melon_recipe");
-                    case "BEETROOT" -> Identifier.of("cosmic-textures", "recipes/beetroot_recipe");
+                    case "BEET_ROOT" -> Identifier.of("cosmic-textures", "recipes/beetroot_recipe");
                     case "TWISTING_VINE" -> Identifier.of("cosmic-textures", "recipes/twisting_vines_recipe");
                     case "PUMPKINS" -> Identifier.of("cosmic-textures", "recipes/pumpkin_recipe");
                     case "NETHER_WART" -> Identifier.of("cosmic-textures", "recipes/nether_wart_recipe");

@@ -27,7 +27,7 @@ public class RepairScrollHandler {
                 default -> null;
             };
 
-        if (name.contains("Iron"))
+        if (name.contains("Elite") || name.contains("Iron"))
             return switch ((int) (double) nbt.getDouble("repairIncr").orElse(0.0)) {
                 case 100 -> Identifier.of("cosmic-textures", "repair-scrolls/iron_repair_100");
                 case 75 -> Identifier.of("cosmic-textures", "repair-scrolls/iron_repair_75");
@@ -36,7 +36,7 @@ public class RepairScrollHandler {
                 default -> null;
             };
 
-        if (name.contains("Diamond"))
+        if (name.contains("Legendary") || name.contains("Diamond"))
             return switch ((int) (double) nbt.getDouble("repairIncr").orElse(0.0)) {
                 case 100 -> Identifier.of("cosmic-textures", "repair-scrolls/diamond_repair_100");
                 case 75 -> Identifier.of("cosmic-textures", "repair-scrolls/diamond_repair_75");
@@ -45,7 +45,7 @@ public class RepairScrollHandler {
                 default -> null;
             };
 
-        if (name.contains("Nether"))
+        if (name.contains("Godly") || name.contains("Nether"))
             return switch ((int) (double) nbt.getDouble("repairIncr").orElse(0.0)) {
                 case 100 -> Identifier.of("cosmic-textures", "repair-scrolls/nether_repair_100");
                 case 75 -> Identifier.of("cosmic-textures", "repair-scrolls/nether_repair_75");
@@ -55,5 +55,5 @@ public class RepairScrollHandler {
             };
 
         return null;
-    };
+    }
 }

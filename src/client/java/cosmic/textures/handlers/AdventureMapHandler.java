@@ -18,7 +18,7 @@ public class AdventureMapHandler {
                 yield switch (fragmentType) {
                     case "lost_wasteland" -> Identifier.of("cosmic-textures", "maps/lost_wasteland_frag");
                     case "demonic_realm" -> Identifier.of("cosmic-textures", "maps/demonic_realm_frag");
-                    case "abyss" -> Identifier.of("cosmic-textures", "maps/abyss_frag");
+                    case "the_abyss" -> Identifier.of("cosmic-textures", "maps/abyss_frag");
                     default -> null;
                 };
             }
@@ -28,7 +28,7 @@ public class AdventureMapHandler {
                 yield switch (adventureMap) {
                     case "lost_wasteland" -> Identifier.of("cosmic-textures", "maps/lost_wasteland_map");
                     case "demonic_realm" -> Identifier.of("cosmic-textures", "maps/demonic_realm_map");
-                    case "abyss" -> Identifier.of("cosmic-textures", "maps/abyss_map");
+                    case "the_abyss" -> Identifier.of("cosmic-textures", "maps/abyss_map");
                     default -> null;
                 };
             }
