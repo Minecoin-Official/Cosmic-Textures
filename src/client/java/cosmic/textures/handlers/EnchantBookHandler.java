@@ -16,16 +16,41 @@ public class EnchantBookHandler {
         if (name == null || name.isEmpty()) return null;
 
         NbtCompound nbt = Objects.requireNonNull(stack.get(DataComponentTypes.CUSTOM_DATA)).copyNbt();
+        String enchBook = nbt.getString("enchBook").orElse("");
 
         if (nbt.getString("cosmicItem").orElse("").equals("randomGearBook")) {
-            if (nbt.getString("enchBook").orElse("").contains("STONE") || nbt.getString("enchBook").orElse("").contains("CHAIN"))
-                return Identifier.of("cosmic-textures", "books/stone_armor_ench_book");
-            if (nbt.getString("enchBook").orElse("").contains("IRON"))
-                return Identifier.of("cosmic-textures", "books/iron_armor_ench_book");
-            if (nbt.getString("enchBook").orElse("").contains("DIAMOND"))
-                return Identifier.of("cosmic-textures", "books/diamond_armor_ench_book");
-            if (nbt.getString("enchBook").orElse("").contains("NETHER"))
-                return Identifier.of("cosmic-textures", "books/nether_armor_ench_book");
+            if (enchBook.contains("STONE") || enchBook.contains("CHAIN")) {
+                return switch (enchBook) {
+                    case "CHAINMAIL_ARMOR" -> Identifier.of("cosmic-textures", "books/stone_armor_ench_book");
+                    case "STONE_TOOL" -> Identifier.of("cosmic-textures", "books/stone_tool_ench_book");
+                    case "STONE_WEAPON" -> Identifier.of("cosmic-textures", "books/stone_wep_ench_book");
+                    default -> Identifier.of("cosmic-textures", "books/stone_ench_book_default");
+                };
+            }
+            if (enchBook.contains("IRON")) {
+                return switch (enchBook) {
+                    case "IRON_ARMOR" -> Identifier.of("cosmic-textures", "books/iron_armor_ench_book");
+                    case "IRON_TOOL" -> Identifier.of("cosmic-textures", "books/iron_tool_ench_book");
+                    case "IRON_WEAPON" -> Identifier.of("cosmic-textures", "books/iron_wep_ench_book");
+                    default -> Identifier.of("cosmic-textures", "books/iron_ench_book_default");
+                };
+            }
+            if (enchBook.contains("DIAMOND")) {
+                return switch (enchBook) {
+                    case "DIAMOND_ARMOR" -> Identifier.of("cosmic-textures", "books/diamond_armor_ench_book");
+                    case "DIAMOND_TOOL" -> Identifier.of("cosmic-textures", "books/diamond_tool_ench_book");
+                    case "DIAMOND_WEAPON" -> Identifier.of("cosmic-textures", "books/diamond_wep_ench_book");
+                    default -> Identifier.of("cosmic-textures", "books/diamond_ench_book_default");
+                };
+            }
+            if (enchBook.contains("NETHER")) {
+                return switch (enchBook) {
+                    case "NETHER_ARMOR" -> Identifier.of("cosmic-textures", "books/nether_armor_ench_book");
+                    case "NETHER_TOOL" -> Identifier.of("cosmic-textures", "books/nether_tool_ench_book");
+                    case "NETHER_WEAPON" -> Identifier.of("cosmic-textures", "books/nether_wep_ench_book");
+                    default -> Identifier.of("cosmic-textures", "books/nether_ench_book_default");
+                };
+            }
         }
 
         String bookTier = nbt.getString("enchType").orElse("");

@@ -29,9 +29,9 @@ public class MarauderKeyHandler {
                 default -> null;
             };
 
-            case "abyss" -> switch (tier) {
-                case "HEROIC" -> Identifier.of("cosmic-textures", "keys/heroic_abyss_key");
-                case "MYTHIC" -> Identifier.of("cosmic-textures", "keys/mythic_abyss_key");
+            case "the_abyss" -> switch (tier) {
+                case "HEROIC" -> Identifier.of("cosmic-textures", "keys/heroic_nether_key");
+                case "MYTHIC" -> Identifier.of("cosmic-textures", "keys/mythic_nether_key");
                 default -> null;
             };
 

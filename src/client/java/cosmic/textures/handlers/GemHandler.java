@@ -22,7 +22,10 @@ public class GemHandler {
         String cosmicItemType = nbt.getString("cosmicItem").orElse("");
 
         // Random Mythic Gems
-        if (nbt.getString("mysteryChest").orElse("").contains("special_random_mythic_gem") && !nbt.getString("mysteryChest").orElse("").equals("special_random_mythic_gem_stone_diamond_static")) {
+        if ((nbt.getString("mysteryChest").orElse("").contains("special_random_mythic_gem") ||
+                nbt.getString("mysteryChest").orElse("").contains("special_mystery_boss_gem") ||
+                nbt.getString("mysteryChest").orElse("").contains("special_boss")) && 
+                !nbt.getString("mysteryChest").orElse("").equals("special_random_mythic_gem_stone_diamond_static")) {
             if (nbt.getString("mysteryChest").orElse("").contains("stone")) return Identifier.of("cosmic-textures", "gems/stone_gem_boss");
             if (nbt.getString("mysteryChest").orElse("").contains("iron")) return Identifier.of("cosmic-textures", "gems/iron_gem_boss");
             if (nbt.getString("mysteryChest").orElse("").contains("diamond")) return Identifier.of("cosmic-textures", "gems/diamond_gem_boss");

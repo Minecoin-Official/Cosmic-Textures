@@ -8,7 +8,7 @@ public class SocketHandler {
     public static Identifier resolve(NbtCompound nbt) {
         String itemTier = nbt.getString("itemTier").orElse("");
         String enchantTier = nbt.getString("enchantTier").orElse("");
-        Integer maxSocket = nbt.getInt("enchantTier").orElse(0);
+        Integer maxSocket = nbt.getInt("maxSock").orElse(0);
 
         return switch (enchantTier) {
             case "BASIC" -> switch (itemTier) {
