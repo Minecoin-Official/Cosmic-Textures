@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "cosmic-textures:item/skits/deadhollow_monarch_block"
+  }
+}

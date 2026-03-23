@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cosmic-textures:item/prisons/pickaxe-prestige-tokens/prestige-token-1"
+  }
+}

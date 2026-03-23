@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cosmic-textures:item/prisons/xp-bottles/uncommon_xp_bottle"
+  }
+}
