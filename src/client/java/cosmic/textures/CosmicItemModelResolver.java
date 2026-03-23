@@ -50,7 +50,7 @@ public class CosmicItemModelResolver {
     public static Identifier resolve(ItemStack stack) {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return null;
-        if (client.getCurrentServerEntry() == null) return null;
+//        if (client.getCurrentServerEntry() == null) return null;
 
         // Sky Logic
         if (stack.contains(DataComponentTypes.CUSTOM_DATA)) {
@@ -115,7 +115,8 @@ public class CosmicItemModelResolver {
             }
 
             // Realm portals and realm portal shards
-            if (cosmicItemType.equals("realm_portal_shard") || cosmicItemType.equals("realm_portal")) return RealmPortalHandler.resolve(stack);
+            if (cosmicItemType.equals("realm_portal_shard") || cosmicItemType.equals("realm_portal"))
+                return RealmPortalHandler.resolve(stack);
 
             // Admin tools
             if (stack.getCustomName() != null && stack.getCustomName().getString().contains("Quantum Sabre ("))
@@ -128,7 +129,8 @@ public class CosmicItemModelResolver {
                 return Identifier.of("cosmic-textures", "admin-tools/maelstrom_incarnate");
 
             // Easter Basket
-            if (cosmicItemType.equals("easter_basket")) return Identifier.of("cosmic-textures", "lootboxes/easter_basket");
+            if (cosmicItemType.equals("easter_basket"))
+                return Identifier.of("cosmic-textures", "lootboxes/easter_basket");
 
             // Repair Scrolls
             if (cosmicItemType.equals("repair_scroll")) return RepairScrollHandler.resolve(stack);
@@ -143,7 +145,8 @@ public class CosmicItemModelResolver {
             if (!nbt.getString("fishable").orElse("").isEmpty()) return FishHandler.resolve(nbt);
 
             // Enchantment Books
-            if (cosmicItemType.equals("customEnchBook") || cosmicItemType.equals("randomGearBook")) return EnchantBookHandler.resolve(stack);
+            if (cosmicItemType.equals("customEnchBook") || cosmicItemType.equals("randomGearBook"))
+                return EnchantBookHandler.resolve(stack);
             // Island treasure
             if (cosmicItemType.equals("skill_treasure_chest") || persistentItemType.equals("skill_treasure_chest"))
                 return Identifier.of("cosmic-textures", "misc-island/treasure_chest");
@@ -165,7 +168,8 @@ public class CosmicItemModelResolver {
                 return Identifier.of("cosmic-textures", "misc/slot_scrap");
 
             // Item flip credit
-            if (cosmicItemType.equals("item_flip_credit")) return Identifier.of("cosmic-textures", "misc/item_flip_credit");
+            if (cosmicItemType.equals("item_flip_credit"))
+                return Identifier.of("cosmic-textures", "misc/item_flip_credit");
 
             // Weekly lootboxes
             if (cosmicItemType.equals("mystery_chest") && stack.isOf(Items.BEACON) && stack.getCustomName() != null
@@ -181,58 +185,87 @@ public class CosmicItemModelResolver {
             }
 
             // Forbidden Tome + Tome Page
-            if (cosmicItemType.equals("forbidden_tome_page")) return Identifier.of("cosmic-textures", "misc-adventure/forbidden_tome_page");
-            if (cosmicItemType.equals("forbidden_tome")) return Identifier.of("cosmic-textures", "misc-adventure/forbidden_tome");
+            if (cosmicItemType.equals("forbidden_tome_page"))
+                return Identifier.of("cosmic-textures", "misc-adventure/forbidden_tome_page");
+            if (cosmicItemType.equals("forbidden_tome"))
+                return Identifier.of("cosmic-textures", "misc-adventure/forbidden_tome");
 
             // Bee Larvae
             if (cosmicItemType.equals("bee_larvae")) return Identifier.of("cosmic-textures", "bees/bee_larvae");
 
             // Mystery Chests
             switch (mysteryChest) {
-                case "special_mystery_boss_gem_static" -> {return Identifier.of("cosmic-textures", "gems/iron_gem_boss");} // Boss Gem Lootbox
-                case "special_random_rare_candy" -> {return Identifier.of("cosmic-textures", "candy/rare");} // Random Rare Candy
-                case "special_weekly_lootbox_static" -> {return Identifier.of("cosmic-textures", "misc/cosmic_crate");} // "Weekly Lootbox" item
+                case "special_mystery_boss_gem_static" -> {
+                    return Identifier.of("cosmic-textures", "gems/iron_gem_boss");
+                } // Boss Gem Lootbox
+                case "special_random_rare_candy" -> {
+                    return Identifier.of("cosmic-textures", "candy/rare");
+                } // Random Rare Candy
+                case "special_weekly_lootbox_static" -> {
+                    return Identifier.of("cosmic-textures", "misc/cosmic_crate");
+                } // "Weekly Lootbox" item
                 // Randomization Scrolls
-                case "special_random_randomization_scroll_stone" -> {return Identifier.of("cosmic-textures", "randomization-scrolls/random_stone");}
-                case "special_random_randomization_scroll_iron" -> {return Identifier.of("cosmic-textures", "randomization-scrolls/random_iron");}
-                case "special_random_randomization_scroll_diamond" -> {return Identifier.of("cosmic-textures", "randomization-scrolls/random_diamond");}
-                case "special_random_randomization_scroll_nether" -> {return Identifier.of("cosmic-textures", "randomization-scrolls/random_nether");}
+                case "special_random_randomization_scroll_stone" -> {
+                    return Identifier.of("cosmic-textures", "randomization-scrolls/random_stone");
+                }
+                case "special_random_randomization_scroll_iron" -> {
+                    return Identifier.of("cosmic-textures", "randomization-scrolls/random_iron");
+                }
+                case "special_random_randomization_scroll_diamond" -> {
+                    return Identifier.of("cosmic-textures", "randomization-scrolls/random_diamond");
+                }
+                case "special_random_randomization_scroll_nether" -> {
+                    return Identifier.of("cosmic-textures", "randomization-scrolls/random_nether");
+                }
                 // Seasonal Lootboxes
-                case "special_fireworks_cache_static", "special_fireworks_cache" -> {return Identifier.of("cosmic-textures", "lootboxes/fireworks_cache");}
-                case "special_fireworks_cache_3x_static" -> {return Identifier.of("cosmic-textures", "lootboxes/fireworks_cache_3x");}
-                case "special_cupids_cache_static", "special_cupids_cache" -> {return Identifier.of("cosmic-textures", "lootboxes/cupid_cache");}
-                case "special_cupids_cache_3x_static" -> {return Identifier.of("cosmic-textures", "lootboxes/cupid_cache_3x");}
+                case "special_fireworks_cache_static", "special_fireworks_cache" -> {
+                    return Identifier.of("cosmic-textures", "lootboxes/fireworks_cache");
+                }
+                case "special_fireworks_cache_3x_static" -> {
+                    return Identifier.of("cosmic-textures", "lootboxes/fireworks_cache_3x");
+                }
+                case "special_cupids_cache_static", "special_cupids_cache" -> {
+                    return Identifier.of("cosmic-textures", "lootboxes/cupid_cache");
+                }
+                case "special_cupids_cache_3x_static" -> {
+                    return Identifier.of("cosmic-textures", "lootboxes/cupid_cache_3x");
+                }
             }
 
             // Random mega module
-            if (mysteryChest.contains("mega_bot_module")) return Identifier.of("cosmic-textures", "bot-upgrades/random_module");
+            if (mysteryChest.contains("mega_bot_module"))
+                return Identifier.of("cosmic-textures", "bot-upgrades/random_module");
             // Admin tool box
             if (mysteryChest.contains("special_random_admin_tool_box")) {
-                if (mysteryChest.contains("stone")) return Identifier.of("cosmic-textures", "admin-tools/admin_tool_box_stone");
-                if (mysteryChest.contains("iron")) return Identifier.of("cosmic-textures", "admin-tools/admin_tool_box_iron");
-                if (mysteryChest.contains("diamond")) return Identifier.of("cosmic-textures", "admin-tools/admin_tool_box_diamond");
-                if (mysteryChest.contains("nether")) return Identifier.of("cosmic-textures", "admin-tools/admin_tool_box_nether");
+                if (mysteryChest.contains("stone"))
+                    return Identifier.of("cosmic-textures", "admin-tools/admin_tool_box_stone");
+                if (mysteryChest.contains("iron"))
+                    return Identifier.of("cosmic-textures", "admin-tools/admin_tool_box_iron");
+                if (mysteryChest.contains("diamond"))
+                    return Identifier.of("cosmic-textures", "admin-tools/admin_tool_box_diamond");
+                if (mysteryChest.contains("nether"))
+                    return Identifier.of("cosmic-textures", "admin-tools/admin_tool_box_nether");
                 else return Identifier.of("cosmic-textures", "admin-tools/admin_tool_box_unknown");
             }
 
             // Auction House Revealed Book Categories
-            if (client.currentScreen == null) return null;
-            String currentScreenTitle = client.currentScreen.getTitle().getString();
-            if (stack.getCustomName() == null) return null;
-            String itemName = stack.getCustomName().getString();
+            if (client.currentScreen != null && stack.getCustomName() != null) {
+                String currentScreenTitle = client.currentScreen.getTitle().getString();
+                String itemName = stack.getCustomName().getString();
 
-            if (currentScreenTitle.equals("Auction Categories") && (itemName.equals("Stone Weapon Enchantments") ||
-                itemName.equals("Stone Tool Enchantments") || itemName.equals("Chainmail Armor Enchantments")) && stack.isOf(Items.ENCHANTED_BOOK))
-                return Identifier.of("cosmic-textures", "books/stone_revealed");
-            if (currentScreenTitle.equals("Auction Categories") && (itemName.equals("Iron Weapon Enchantments") ||
-                    itemName.equals("Iron Tool Enchantments") || itemName.equals("Iron Armor Enchantments")) && stack.isOf(Items.ENCHANTED_BOOK))
-                return Identifier.of("cosmic-textures", "books/iron_revealed");
-            if (currentScreenTitle.equals("Auction Categories") && (itemName.equals("Diamond Weapon Enchantments") ||
-                    itemName.equals("Diamond Tool Enchantments") || itemName.equals("Diamond Armor Enchantments")) && stack.isOf(Items.ENCHANTED_BOOK))
-                return Identifier.of("cosmic-textures", "books/diamond_revealed");
-            if (currentScreenTitle.equals("Auction Categories") && (itemName.equals("Nether Weapon Enchantments") ||
-                    itemName.equals("Nether Tool Enchantments") || itemName.equals("Nether Armor Enchantments")) && stack.isOf(Items.ENCHANTED_BOOK))
-                return Identifier.of("cosmic-textures", "books/nether_revealed");
+                if (currentScreenTitle.equals("Auction Categories") && (itemName.equals("Stone Weapon Enchantments") ||
+                        itemName.equals("Stone Tool Enchantments") || itemName.equals("Chainmail Armor Enchantments")) && stack.isOf(Items.ENCHANTED_BOOK))
+                    return Identifier.of("cosmic-textures", "books/stone_revealed");
+                if (currentScreenTitle.equals("Auction Categories") && (itemName.equals("Iron Weapon Enchantments") ||
+                        itemName.equals("Iron Tool Enchantments") || itemName.equals("Iron Armor Enchantments")) && stack.isOf(Items.ENCHANTED_BOOK))
+                    return Identifier.of("cosmic-textures", "books/iron_revealed");
+                if (currentScreenTitle.equals("Auction Categories") && (itemName.equals("Diamond Weapon Enchantments") ||
+                        itemName.equals("Diamond Tool Enchantments") || itemName.equals("Diamond Armor Enchantments")) && stack.isOf(Items.ENCHANTED_BOOK))
+                    return Identifier.of("cosmic-textures", "books/diamond_revealed");
+                if (currentScreenTitle.equals("Auction Categories") && (itemName.equals("Nether Weapon Enchantments") ||
+                        itemName.equals("Nether Tool Enchantments") || itemName.equals("Nether Armor Enchantments")) && stack.isOf(Items.ENCHANTED_BOOK))
+                    return Identifier.of("cosmic-textures", "books/nether_revealed");
+            }
         }
 
         // Prisons Items
@@ -263,49 +296,69 @@ public class CosmicItemModelResolver {
             }
 
             // Market Textures
-            if (client.currentScreen == null) return null;
-            String currentScreenTitle = client.currentScreen.getTitle().getString();
-            if (stack.getCustomName() == null) return null;
-            String itemName = stack.getCustomName().getString();
+            if (client.currentScreen != null && stack.getCustomName() != null) {
+                String currentScreenTitle = client.currentScreen.getTitle().getString();
+                String itemName = stack.getCustomName().getString();
 
-            // Dust
-            if (currentScreenTitle.contains("Pickaxe Dust - Select Tier")) {
-                if (itemName.contains("Simple") && stack.isOf(Items.SUGAR))
-                    return Identifier.of("cosmic-textures", "prisons/dust/simple_dust");
-                if (itemName.contains("Uncommon") && stack.isOf(Items.SUGAR))
-                    return Identifier.of("cosmic-textures", "prisons/dust/uncommon_dust");
-                if (itemName.contains("Elite") && stack.isOf(Items.SUGAR))
-                    return Identifier.of("cosmic-textures", "prisons/dust/elite_dust");
-                if (itemName.contains("Ultimate") && stack.isOf(Items.SUGAR))
-                    return Identifier.of("cosmic-textures", "prisons/dust/ultimate_dust");
-                if (itemName.contains("Legendary") && stack.isOf(Items.SUGAR))
-                    return Identifier.of("cosmic-textures", "prisons/dust/legendary_dust");
-                if (itemName.contains("Godly") && stack.isOf(Items.SUGAR))
-                    return Identifier.of("cosmic-textures", "prisons/dust/godly_dust");
-            }
+                // Dust
+                if (currentScreenTitle.contains("Pickaxe Dust - Select Tier")) {
+                    if (itemName.contains("Simple") && stack.isOf(Items.SUGAR))
+                        return Identifier.of("cosmic-textures", "prisons/dust/simple_dust");
+                    if (itemName.contains("Uncommon") && stack.isOf(Items.SUGAR))
+                        return Identifier.of("cosmic-textures", "prisons/dust/uncommon_dust");
+                    if (itemName.contains("Elite") && stack.isOf(Items.SUGAR))
+                        return Identifier.of("cosmic-textures", "prisons/dust/elite_dust");
+                    if (itemName.contains("Ultimate") && stack.isOf(Items.SUGAR))
+                        return Identifier.of("cosmic-textures", "prisons/dust/ultimate_dust");
+                    if (itemName.contains("Legendary") && stack.isOf(Items.SUGAR))
+                        return Identifier.of("cosmic-textures", "prisons/dust/legendary_dust");
+                    if (itemName.contains("Godly") && stack.isOf(Items.SUGAR))
+                        return Identifier.of("cosmic-textures", "prisons/dust/godly_dust");
+                }
 
-            // Charge Orbs
-            if (currentScreenTitle.contains("Charge Orbs - Listings")) {
-                if (itemName.equals("1% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_1");
-                if (itemName.equals("2% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_2");
-                if (itemName.equals("3% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_3");
-                if (itemName.equals("4% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_4");
-                if (itemName.equals("5% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_5");
-                if (itemName.equals("6% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_6");
-                if (itemName.equals("7% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_7");
-                if (itemName.equals("8% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_8");
-                if (itemName.equals("9% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_9");
-                if (itemName.equals("10% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_10");
-                if (itemName.equals("11% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_11");
-                if (itemName.equals("12% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_12");
-                if (itemName.equals("13% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_13");
-                if (itemName.equals("14% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_14");
-                if (itemName.equals("15% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_15");
-                if (itemName.equals("16% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_16");
-                if (itemName.equals("17% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_17");
-                if (itemName.equals("18% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_18");
-                if (itemName.equals("19% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_19");
-                if (itemName.equals("20% Charge Orb") && stack.isOf(Items.MAGMA_CREAM)) return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_20");
+                // Charge Orbs
+                if (currentScreenTitle.contains("Charge Orbs - Listings")) {
+                    if (itemName.equals("1% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_1");
+                    if (itemName.equals("2% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_2");
+                    if (itemName.equals("3% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_3");
+                    if (itemName.equals("4% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_4");
+                    if (itemName.equals("5% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_5");
+                    if (itemName.equals("6% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_6");
+                    if (itemName.equals("7% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_7");
+                    if (itemName.equals("8% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_8");
+                    if (itemName.equals("9% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_9");
+                    if (itemName.equals("10% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_10");
+                    if (itemName.equals("11% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_11");
+                    if (itemName.equals("12% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_12");
+                    if (itemName.equals("13% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_13");
+                    if (itemName.equals("14% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_14");
+                    if (itemName.equals("15% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_15");
+                    if (itemName.equals("16% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_16");
+                    if (itemName.equals("17% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_17");
+                    if (itemName.equals("18% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_18");
+                    if (itemName.equals("19% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_19");
+                    if (itemName.equals("20% Charge Orb") && stack.isOf(Items.MAGMA_CREAM))
+                        return Identifier.of("cosmic-textures", "prisons/charge-orbs/charge_orb_20");
+                }
             }
 
             // Assorted Prisons Items:
