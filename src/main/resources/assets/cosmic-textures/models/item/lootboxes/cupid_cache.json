@@ -1,6 +1,7 @@
 {
 	"textures": {
-		"1": "cosmic-textures:item/lootboxes/cupid_cache"
+		"1": "cosmic-textures:item/lootboxes/cupid_cache",
+		"particle": "cosmic-textures:item/lootboxes/cupid_cache"
 	},
 	"elements": [
 		{
