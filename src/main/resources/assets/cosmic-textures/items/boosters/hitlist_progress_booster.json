@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "cosmic-textures:item/boosters/hitlist_progress_booster"
+  }
+}

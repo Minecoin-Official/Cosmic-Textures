@@ -9,6 +9,7 @@ public class RankHandler {
         byte rankTier = nbt.getByte("rankTier").orElse((byte) 0);
 
         return switch (rankTier) {
+            case 1 -> Identifier.of("cosmic-textures", "misc/rank_1");
             case 2 -> Identifier.of("cosmic-textures", "misc/rank_2");
             case 3 -> Identifier.of("cosmic-textures", "misc/rank_3");
             // Can add celestial here

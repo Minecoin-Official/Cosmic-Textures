@@ -37,14 +37,17 @@ public class CosmicItemModelResolver {
         HANDLERS.put("socket_scroll", SocketScrollHandler::resolve);
         HANDLERS.put("island_booster_module", ChunkBoosterHandler::resolve);
         HANDLERS.put("black_scroll", BlackScrollHandler::resolve);
-        HANDLERS.put("custom_recipe", CustomRecipeHandler::resolve);
-        HANDLERS.put("custom_recipe_page", CustomRecipeHandler::resolve);
         HANDLERS.put("facility_access_card", FacilityCardHandler::resolve);
         HANDLERS.put("skit_redeem", SkitHandler::resolve);
         HANDLERS.put("lucky_block", SkitHandler::resolve);
         HANDLERS.put("mythic_envoy", FlareHandler::resolve);
         HANDLERS.put("scavenger_envoy", FlareHandler::resolve);
         HANDLERS.put("armorset_catalyst", CatalystHandler::resolve);
+        HANDLERS.put("catalyst_extractor", CatalystExtractorHandler::resolve);
+        HANDLERS.put("player_event_mult_booster", PersonalBoosterHandler::resolve);
+        HANDLERS.put("vault_key", VaultKeyHandler::resolve);
+        HANDLERS.put("fishing_bait_block_fragment", BaitHandler::resolve);
+        HANDLERS.put("island_buddy", IslandBuddyHandler::resolve);
     }
 
     public static Identifier resolve(ItemStack stack) {
@@ -53,6 +56,12 @@ public class CosmicItemModelResolver {
 //        if (client.getCurrentServerEntry() == null) return null;
 
         // Sky Logic
+
+        // Spawners (No custom data)
+        if (stack.isOf(Items.SPAWNER) && stack.getCustomName() != null) {
+            return SpawnerHandler.resolve(stack);
+        }
+
         if (stack.contains(DataComponentTypes.CUSTOM_DATA)) {
             NbtComponent customData = stack.get(DataComponentTypes.CUSTOM_DATA);
             if (customData == null) return null;
@@ -72,6 +81,13 @@ public class CosmicItemModelResolver {
 
             // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             // Other miscellaneous item textures ⬇️
+
+            // Custom Recipes
+            if (cosmicItemType.equals("custom_recipe") || cosmicItemType.equals("custom_recipe_page"))
+                return CustomRecipeHandler.resolve(stack);
+
+            // Custom Recipe Crafts
+            if (!nbt.getString("cosmicRecipeItem").orElse("").isEmpty()) return CustomCraftsHandler.resolve(stack);
 
             // Auto Bots (placed)
             if ((stack.isOf(Items.DISPENSER)
@@ -94,6 +110,16 @@ public class CosmicItemModelResolver {
             if (persistentItemType.contains("auto_bot_upgrade") ||
                     cosmicItemType.contains("auto_bot_upgrade"))
                 return BotUpgradeHandler.resolve(stack);
+
+            if (cosmicItemType.equals("mystery_chest") && mysteryChest.equals("special_random_teir_1_bot_upgrade"))
+                return Identifier.of("cosmic-textures", "bot-upgrades/random_bot_upgrade_1");
+            if (cosmicItemType.equals("mystery_chest") && mysteryChest.equals("special_random_teir_2_bot_upgrade"))
+                return Identifier.of("cosmic-textures", "bot-upgrades/random_bot_upgrade_2");
+            if (cosmicItemType.equals("mystery_chest") && mysteryChest.equals("special_random_teir_3_bot_upgrade"))
+                return Identifier.of("cosmic-textures", "bot-upgrades/random_bot_upgrade_3");
+            if (cosmicItemType.equals("mystery_chest") && mysteryChest.equals("special_random_bot_upgrade"))
+                return Identifier.of("cosmic-textures", "bot-upgrades/random_bot_upgrade");
+
             // Gems
             if (cosmicItemType.equals("random_enchant_gem") ||
                     cosmicItemType.equals("enchant_gem") ||
@@ -105,10 +131,6 @@ public class CosmicItemModelResolver {
 
             // Custom Crafts
             if (cosmicItemType.equals("honey_bottle")) return CustomCraftsHandler.resolve(stack);
-
-            // Spawners
-            if (stack.isOf(Items.SPAWNER)
-            ) return SpawnerHandler.resolve(stack);
 
             if (!nbt.getString("nodeFragment").orElse("").isEmpty()) {
                 return NodeFragmentHandler.resolve(nbt.getString("nodeFragment").orElse(""));
@@ -128,12 +150,34 @@ public class CosmicItemModelResolver {
             if (stack.getCustomName() != null && stack.getCustomName().getString().contains("Maelstrom Incarnate ("))
                 return Identifier.of("cosmic-textures", "admin-tools/maelstrom_incarnate");
 
+            // Linked Chest
+            if (cosmicItemType.equals("ender_chest"))
+                return Identifier.of("cosmic-textures", "misc-island/linked_chest");
+
+            // Collection Chest
+            if (cosmicItemType.equals("collection_chest"))
+                return Identifier.of("cosmic-textures", "misc-island/collection_chest");
+
+            // Builder's Wand
+            if (cosmicItemType.equals("builders_wand")) {
+                if (nbt.getInt("maxSize").orElse(0).equals(250)) return Identifier.of("cosmic-textures", "misc-island/builders_wand_250");
+                if (nbt.getInt("maxSize").orElse(0).equals(1000)) return Identifier.of("cosmic-textures", "misc-island/builders_wand_1000");
+            }
+
+            // Hopper Dropper
+            if (cosmicItemType.equals("hopper_dropper"))
+                return Identifier.of("cosmic-textures", "misc-island/hopper_dropper");
+
             // Easter Basket
             if (cosmicItemType.equals("easter_basket"))
                 return Identifier.of("cosmic-textures", "lootboxes/easter_basket");
 
             // Repair Scrolls
             if (cosmicItemType.equals("repair_scroll")) return RepairScrollHandler.resolve(stack);
+
+            // Caskets
+            if (cosmicItemType.equals("mystery_chest") && mysteryChest.contains("casket"))
+                return CasketHandler.resolve(stack);
 
             // Casket Keys
             if (nbt.getString("chestKeyLootbox").orElse("").contains("casket")) return CasketHandler.resolve(stack);
@@ -144,12 +188,24 @@ public class CosmicItemModelResolver {
             // Fish
             if (!nbt.getString("fishable").orElse("").isEmpty()) return FishHandler.resolve(nbt);
 
+            // Random Personal Booster
+            if (cosmicItemType.equals("mystery_chest") && mysteryChest.equals("special_random_booster"))
+                return Identifier.of("cosmic-textures", "boosters/random_personal_booster");
+
             // Enchantment Books
             if (cosmicItemType.equals("customEnchBook") || cosmicItemType.equals("randomGearBook"))
                 return EnchantBookHandler.resolve(stack);
             // Island treasure
             if (cosmicItemType.equals("skill_treasure_chest") || persistentItemType.equals("skill_treasure_chest"))
                 return Identifier.of("cosmic-textures", "misc-island/treasure_chest");
+
+            // Cosmetic redeem
+            if (cosmicItemType.equals("cosmetic_redeem"))
+                return Identifier.of("cosmic-textures", "misc/cosmetic_redeem");
+
+            // Science satchel
+            if (cosmicItemType.equals("gold_satchel") && nbt.getByte("activated").orElse((byte) 0).equals((byte) 1))
+                return Identifier.of("cosmic-textures", "misc/science_satchel_enabled");
 
             // Money Note
             if (cosmicItemType.equals("money_note") || persistentItemType.equals("money_note"))
@@ -171,10 +227,14 @@ public class CosmicItemModelResolver {
             if (cosmicItemType.equals("item_flip_credit"))
                 return Identifier.of("cosmic-textures", "misc/item_flip_credit");
 
+            // Rank Generator
+            if (cosmicItemType.equals("mystery_chest") && mysteryChest.contains("rank_generator"))
+                return Identifier.of("cosmic-textures", "misc/rank_generator");
+
             // Weekly lootboxes
-            if (cosmicItemType.equals("mystery_chest") && stack.isOf(Items.BEACON) && stack.getCustomName() != null
-                    && Objects.requireNonNull(stack.getCustomName()).getString().contains("Lootbox"))
-                return Identifier.of("cosmic-textures", "misc/cosmic_crate");
+//            if (cosmicItemType.equals("mystery_chest") && stack.isOf(Items.BEACON) && stack.getCustomName() != null
+//                    && Objects.requireNonNull(stack.getCustomName()).getString().contains("Lootbox"))
+//                return Identifier.of("cosmic-textures", "misc/cosmic_crate");
 
             // Science Amplifiers
             if (cosmicItemType.equals("science_amplifier")) {
@@ -193,43 +253,54 @@ public class CosmicItemModelResolver {
             // Bee Larvae
             if (cosmicItemType.equals("bee_larvae")) return Identifier.of("cosmic-textures", "bees/bee_larvae");
 
+            // Cosmic Crate
+            if (cosmicItemType.equals("cosmic_crate")) return Identifier.of("cosmic-textures", "misc/cosmic_crate");
+
             // Mystery Chests
             switch (mysteryChest) {
+                // Weekly Lootbox
+//                case "special_weekly_lootbox_static" -> {
+//                    return Identifier.of("cosmic-textures", "misc/cosmic_crate");}
+                // Boss Gem Lootbox
                 case "special_mystery_boss_gem_static" -> {
-                    return Identifier.of("cosmic-textures", "gems/iron_gem_boss");
-                } // Boss Gem Lootbox
+                    return Identifier.of("cosmic-textures", "gems/iron_gem_boss");}
+                // Random Rare Candy
                 case "special_random_rare_candy" -> {
-                    return Identifier.of("cosmic-textures", "candy/rare");
-                } // Random Rare Candy
-                case "special_weekly_lootbox_static" -> {
-                    return Identifier.of("cosmic-textures", "misc/cosmic_crate");
-                } // "Weekly Lootbox" item
+                    return Identifier.of("cosmic-textures", "candy/rare");}
                 // Randomization Scrolls
                 case "special_random_randomization_scroll_stone" -> {
-                    return Identifier.of("cosmic-textures", "randomization-scrolls/random_stone");
-                }
+                    return Identifier.of("cosmic-textures", "randomization-scrolls/random_stone");}
                 case "special_random_randomization_scroll_iron" -> {
-                    return Identifier.of("cosmic-textures", "randomization-scrolls/random_iron");
-                }
+                    return Identifier.of("cosmic-textures", "randomization-scrolls/random_iron");}
                 case "special_random_randomization_scroll_diamond" -> {
-                    return Identifier.of("cosmic-textures", "randomization-scrolls/random_diamond");
-                }
+                    return Identifier.of("cosmic-textures", "randomization-scrolls/random_diamond");}
                 case "special_random_randomization_scroll_nether" -> {
-                    return Identifier.of("cosmic-textures", "randomization-scrolls/random_nether");
-                }
+                    return Identifier.of("cosmic-textures", "randomization-scrolls/random_nether");}
                 // Seasonal Lootboxes
                 case "special_fireworks_cache_static", "special_fireworks_cache" -> {
-                    return Identifier.of("cosmic-textures", "lootboxes/fireworks_cache");
-                }
-                case "special_fireworks_cache_3x_static" -> {
-                    return Identifier.of("cosmic-textures", "lootboxes/fireworks_cache_3x");
-                }
+                    return Identifier.of("cosmic-textures", "lootboxes/fireworks_cache");}
+                case "special_fireworks_cache_3x_static" , "special_fireworks_cache_3x" -> {
+                    return Identifier.of("cosmic-textures", "lootboxes/fireworks_cache_3x");}
                 case "special_cupids_cache_static", "special_cupids_cache" -> {
-                    return Identifier.of("cosmic-textures", "lootboxes/cupid_cache");
+                    return Identifier.of("cosmic-textures", "lootboxes/cupid_cache");}
+                case "special_cupids_cache_3x_static", "special_cupids_cache_3x" -> {
+                    return Identifier.of("cosmic-textures", "lootboxes/cupid_cache_3x");}
+            }
+
+            // Random socket expanders
+            if (mysteryChest.contains("random_socket_expander")) {
+                // Random tech socket
+                if (mysteryChest.contains("technology")) {
+                    if (mysteryChest.contains("chain") || mysteryChest.contains("stone")) return Identifier.of("cosmic-textures", "sockets/tech_random_stone");
+                    if (mysteryChest.contains("iron")) return Identifier.of("cosmic-textures", "sockets/tech_random_iron");
+                    if (mysteryChest.contains("diamond")) return Identifier.of("cosmic-textures", "sockets/tech_random_diamond");
+                    if (mysteryChest.contains("nether")) return Identifier.of("cosmic-textures", "sockets/tech_random_nether");
                 }
-                case "special_cupids_cache_3x_static" -> {
-                    return Identifier.of("cosmic-textures", "lootboxes/cupid_cache_3x");
-                }
+
+                // Non-tech random sockets
+                if (mysteryChest.contains("chain") || mysteryChest.contains("stone")) return Identifier.of("cosmic-textures", "sockets/random_stone");
+                if (mysteryChest.contains("iron")) return Identifier.of("cosmic-textures", "sockets/random_iron");
+                if (mysteryChest.contains("diamond")) return Identifier.of("cosmic-textures", "sockets/random_diamond");
             }
 
             // Random mega module
@@ -381,7 +452,7 @@ public class CosmicItemModelResolver {
                     case "gen_breaker" -> Identifier.of("cosmic-textures", "prisons/misc/gen_breaker");
                     case "slot_bot_ticket" -> Identifier.of("cosmic-textures", "misc/slot_bot");
                     case "eraser" -> Identifier.of("cosmic-textures", "prisons/enchant-items/eraser");
-                    case "bandit_box_key" -> BanditBoxHandler.resolve(publicBukkitValues);
+                    case "bandit_box_key", "bandit_box" -> BanditBoxHandler.resolve(publicBukkitValues);
                     case "clue_scroll", "mystery_clue_scroll" -> ClueScrollHandler.resolve(publicBukkitValues);
                     case "pickaxe_prestige_token" -> PrestigeTokenHandler.resolve(publicBukkitValues);
                     case "xp_bottle" -> xpBottleHandler.resolve(publicBukkitValues);

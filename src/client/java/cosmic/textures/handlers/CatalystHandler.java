@@ -19,6 +19,9 @@ public class CatalystHandler {
                 case "mythic" -> Identifier.of("cosmic-textures", "catalysts/chain_mythic");
                 case "boss" -> Identifier.of("cosmic-textures", "catalysts/chain_boss");
                 case "stalker" -> Identifier.of("cosmic-textures", "catalysts/chain_stalker");
+                case "bard" -> Identifier.of("cosmic-textures", "catalysts/chain_bard");
+                case "mirage" -> Identifier.of("cosmic-textures", "catalysts/chain_mirage");
+                case "intimidation" -> Identifier.of("cosmic-textures", "catalysts/chain_intimidation");
                 default -> null;
             };
             case "IRON" -> switch (armorSetType) {
@@ -29,6 +32,9 @@ public class CatalystHandler {
                 case "mythic" -> Identifier.of("cosmic-textures", "catalysts/iron_mythic");
                 case "boss" -> Identifier.of("cosmic-textures", "catalysts/iron_boss");
                 case "stalker" -> Identifier.of("cosmic-textures", "catalysts/iron_stalker");
+                case "bard" -> Identifier.of("cosmic-textures", "catalysts/iron_bard");
+                case "mirage" -> Identifier.of("cosmic-textures", "catalysts/iron_mirage");
+                case "intimidation" -> Identifier.of("cosmic-textures", "catalysts/iron_intimidation");
                 default -> null;
             };
             case "DIAMOND" -> switch (armorSetType) {
@@ -39,6 +45,9 @@ public class CatalystHandler {
                 case "mythic" -> Identifier.of("cosmic-textures", "catalysts/diamond_mythic");
                 case "boss" -> Identifier.of("cosmic-textures", "catalysts/diamond_boss");
                 case "stalker" -> Identifier.of("cosmic-textures", "catalysts/diamond_stalker");
+                case "bard" -> Identifier.of("cosmic-textures", "catalysts/diamond_bard");
+                case "mirage" -> Identifier.of("cosmic-textures", "catalysts/diamond_mirage");
+                case "intimidation" -> Identifier.of("cosmic-textures", "catalysts/diamond_intimidation");
                 default -> null;
             };
             case "NETHER" -> switch (armorSetType) {
@@ -49,6 +58,9 @@ public class CatalystHandler {
                 case "mythic" -> Identifier.of("cosmic-textures", "catalysts/nether_mythic");
                 case "boss" -> Identifier.of("cosmic-textures", "catalysts/nether_boss");
                 case "stalker" -> Identifier.of("cosmic-textures", "catalysts/nether_stalker");
+                case "bard" -> Identifier.of("cosmic-textures", "catalysts/nether_bard");
+                case "mirage" -> Identifier.of("cosmic-textures", "catalysts/nether_mirage");
+                case "intimidation" -> Identifier.of("cosmic-textures", "catalysts/nether_intimidation");
                 default -> null;
             };
             default -> null;

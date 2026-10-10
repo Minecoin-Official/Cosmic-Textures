@@ -9,7 +9,7 @@ public class CandyHandler {
         return switch (nbt.getInt("maxLevel").orElse(0)) {
             case 2 -> Identifier.of("cosmic-textures", "candy/simple");
             case 4 -> Identifier.of("cosmic-textures", "candy/elite");
-            case 6 -> Identifier.of("cosmic-textures", "candy/legendary");
+            case 5, 6 -> Identifier.of("cosmic-textures", "candy/legendary");
             case 8 -> Identifier.of("cosmic-textures", "candy/godly");
             case 9 -> Identifier.of("cosmic-textures", "candy/heroic");
             case 10 -> Identifier.of("cosmic-textures", "candy/mythic");

@@ -16,12 +16,14 @@ public class SkitHandler {
                 case "DEAD_HOLLOW" -> Identifier.of("cosmic-textures", "skits/deadhollow_monarch_gem");
                 case "IRONBOUND_SHADE" -> Identifier.of("cosmic-textures", "skits/ironbound_shade_gem");
                 case "BLOOD_WROUGHT" -> Identifier.of("cosmic-textures", "skits/bloodwrought_wraith_gem");
+                case "EXTRACTOR" -> Identifier.of("cosmic-textures", "skits/extractor_gem");
                 default -> null;
             };
             case "lucky_block" -> switch (skitType) {
                 case "DEAD_HOLLOW" -> Identifier.of("cosmic-textures", "skits/deadhollow_monarch_block");
                 case "IRONBOUND_SHADE" -> Identifier.of("cosmic-textures", "skits/ironbound_shade_block");
                 case "BLOOD_WROUGHT" -> Identifier.of("cosmic-textures", "skits/bloodwrought_wraith_block");
+                case "EXTRACTOR" -> Identifier.of("cosmic-textures", "skits/extractor_gem");
                 default -> null;
             };
             default -> null;

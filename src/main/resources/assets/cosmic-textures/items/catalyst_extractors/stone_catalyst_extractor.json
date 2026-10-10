@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "cosmic-textures:item/catalyst_extractors/stone_catalyst_extractor"
+  }
+}

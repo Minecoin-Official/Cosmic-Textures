@@ -25,6 +25,8 @@ public class BotPlacedHandler {
             case "{itemSkinType:\"BOT_CRAFTER_OFF\"}" -> Identifier.of("cosmic-textures", "bots/crafting_bot_on");
             case "{itemSkinType:\"BOT_BUNDLER_ON\"}" -> Identifier.of("cosmic-textures", "bots/compressor_bot_off");
             case "{itemSkinType:\"BOT_BUNDLER_OFF\"}" -> Identifier.of("cosmic-textures", "bots/compressor_bot_on");
+            case "{itemSkinType:\"BOT_FORESTER_ON\"}" -> Identifier.of("cosmic-textures", "bots/forester_bot_off");
+            case "{itemSkinType:\"BOT_FORESTER_OFF\"}" -> Identifier.of("cosmic-textures", "bots/forester_bot_on");
             default -> null;
         };
     }

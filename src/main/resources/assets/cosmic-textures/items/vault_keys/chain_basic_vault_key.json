@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "cosmic-textures:item/vault_keys/chain_basic_vault_key"
+  }
+}

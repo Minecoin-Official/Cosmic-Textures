@@ -10,6 +10,23 @@ public class SocketHandler {
         String enchantTier = nbt.getString("enchantTier").orElse("");
         Integer maxSocket = nbt.getInt("maxSock").orElse(0);
 
+        // Mythic +2
+        if (enchantTier.equals("MYTHIC") && maxSocket.equals(2)) return switch (itemTier) {
+            case "STONE" -> Identifier.of("cosmic-textures", "sockets/mythic_plus2_chain");
+            case "IRON" -> Identifier.of("cosmic-textures", "sockets/mythic_plus2_iron");
+            case "DIAMOND" -> Identifier.of("cosmic-textures", "sockets/mythic_plus2_diamond");
+            default -> Identifier.of("cosmic-textures", "sockets/mythic_plus2");
+        };
+
+        // Tech sockets
+        if (enchantTier.equals("SCIENCE")) return switch (itemTier) {
+            case "STONE" -> Identifier.of("cosmic-textures", "sockets/tech_socket_stone");
+            case "IRON" -> Identifier.of("cosmic-textures", "sockets/tech_socket_iron");
+            case "DIAMOND" -> Identifier.of("cosmic-textures", "sockets/tech_socket_diamond");
+            case "NETHER" -> Identifier.of("cosmic-textures", "sockets/tech_socket_nether");
+            default -> Identifier.of("cosmic-textures", "sockets/tech_socket");
+        };
+
         return switch (enchantTier) {
             case "BASIC" -> switch (itemTier) {
                 case "STONE" -> Identifier.of("cosmic-textures", "sockets/basic1");

@@ -3,6 +3,7 @@
   "package": "cosmic.textures.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
+    "ClientPlayerInteractionManagerMixin",
     "ExampleClientMixin",
     "ItemModelManagerMixin"
   ],

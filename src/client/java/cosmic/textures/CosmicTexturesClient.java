@@ -6,6 +6,6 @@ public class CosmicTexturesClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-
+        ItemDataViewer.init();
     }
 }

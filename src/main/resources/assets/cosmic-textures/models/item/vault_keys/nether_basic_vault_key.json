@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cosmic-textures:item/vault_keys/nether_basic_vault_key"
+  }
+}

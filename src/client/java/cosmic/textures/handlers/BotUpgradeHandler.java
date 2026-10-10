@@ -82,6 +82,13 @@ public class BotUpgradeHandler {
                     default -> null;
                 };
 
+                case "FORESTER" -> switch (tier) {
+                    case 1 -> Identifier.of("cosmic-textures", "bot-upgrades/forester1");
+                    case 2 -> Identifier.of("cosmic-textures", "bot-upgrades/forester2");
+                    case 3 -> Identifier.of("cosmic-textures", "bot-upgrades/forester3");
+                    default -> null;
+                };
+
                 default -> null;
             };
         }

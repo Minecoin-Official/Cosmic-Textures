@@ -6,6 +6,49 @@ import net.minecraft.util.Identifier;
 public class DustHandler {
 
     public static Identifier resolve(NbtCompound nbt) {
+
+        if (nbt.getString("enchantTierSpecific").orElse("").equals("SCIENCE")) {
+            return switch (nbt.getInt("tier").orElse(0)) {
+                case 2 -> switch (nbt.getInt("chanceIncrease").orElse(0)) {
+                    case 1 -> Identifier.of("cosmic-textures", "dust/stone_tech_dust_1");
+                    case 2 -> Identifier.of("cosmic-textures", "dust/stone_tech_dust_2");
+                    case 3 -> Identifier.of("cosmic-textures", "dust/stone_tech_dust_3");
+                    case 4 -> Identifier.of("cosmic-textures", "dust/stone_tech_dust_4");
+                    case 5 -> Identifier.of("cosmic-textures", "dust/stone_tech_dust_5");
+                    default -> Identifier.of("cosmic-textures", "dust/z_stone_tech_dust");
+                };
+
+                case 4 -> switch (nbt.getInt("chanceIncrease").orElse(0)) {
+                    case 1 -> Identifier.of("cosmic-textures", "dust/iron_tech_dust_1");
+                    case 2 -> Identifier.of("cosmic-textures", "dust/iron_tech_dust_2");
+                    case 3 -> Identifier.of("cosmic-textures", "dust/iron_tech_dust_3");
+                    case 4 -> Identifier.of("cosmic-textures", "dust/iron_tech_dust_4");
+                    case 5 -> Identifier.of("cosmic-textures", "dust/iron_tech_dust_5");
+                    default -> Identifier.of("cosmic-textures", "dust/z_iron_tech_dust");
+                };
+
+                case 5 -> switch (nbt.getInt("chanceIncrease").orElse(0)) {
+                    case 1 -> Identifier.of("cosmic-textures", "dust/diamond_tech_dust_1");
+                    case 2 -> Identifier.of("cosmic-textures", "dust/diamond_tech_dust_2");
+                    case 3 -> Identifier.of("cosmic-textures", "dust/diamond_tech_dust_3");
+                    case 4 -> Identifier.of("cosmic-textures", "dust/diamond_tech_dust_4");
+                    case 5 -> Identifier.of("cosmic-textures", "dust/diamond_tech_dust_5");
+                    default -> Identifier.of("cosmic-textures", "dust/z_diamond_tech_dust");
+                };
+
+                case 6 -> switch (nbt.getInt("chanceIncrease").orElse(0)) {
+                    case 1 -> Identifier.of("cosmic-textures", "dust/nether_tech_dust_1");
+                    case 2 -> Identifier.of("cosmic-textures", "dust/nether_tech_dust_2");
+                    case 3 -> Identifier.of("cosmic-textures", "dust/nether_tech_dust_3");
+                    case 4 -> Identifier.of("cosmic-textures", "dust/nether_tech_dust_4");
+                    case 5 -> Identifier.of("cosmic-textures", "dust/nether_tech_dust_5");
+                    default -> Identifier.of("cosmic-textures", "dust/z_nether_tech_dust");
+                };
+
+                default -> null;
+            };
+        }
+
         return switch (nbt.getInt("tier").orElse(0)) {
             case 2 -> switch (nbt.getInt("chanceIncrease").orElse(0)) {
                 case 1 -> Identifier.of("cosmic-textures", "dust/stone_dust_1");

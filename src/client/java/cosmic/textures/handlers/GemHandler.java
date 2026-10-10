@@ -20,6 +20,7 @@ public class GemHandler {
         byte randomTier = nbt.getByte("tier").orElse((byte) 0);
         byte openedTier = nbt.getCompoundOrEmpty("gems").getByte("tier").orElse((byte) 0);
         String cosmicItemType = nbt.getString("cosmicItem").orElse("");
+        String enchantType = nbt.getString("enchantType").orElse("");
 
         // Random Mythic Gems
         if ((nbt.getString("mysteryChest").orElse("").contains("special_random_mythic_gem") ||
@@ -75,6 +76,39 @@ public class GemHandler {
                 default -> null;
             };
         }
+
+        // Unopened Tech Gem
+        if (enchantType.contains("SCIENCE")) return switch (randomTier) {
+            case 2 -> switch (rarity) {
+                case "MINOR" -> Identifier.of("cosmic-textures", "gems/stone_tech_gem_minor");
+                case "MAJOR" -> Identifier.of("cosmic-textures", "gems/stone_tech_gem_major");
+                case "PERFECT" -> Identifier.of("cosmic-textures", "gems/stone_tech_gem_perfect");
+                default -> null;
+            };
+
+            case 4 -> switch (rarity) {
+                case "MINOR" -> Identifier.of("cosmic-textures", "gems/iron_tech_gem_minor");
+                case "MAJOR" -> Identifier.of("cosmic-textures", "gems/iron_tech_gem_major");
+                case "PERFECT" -> Identifier.of("cosmic-textures", "gems/iron_tech_gem_perfect");
+                default -> null;
+            };
+
+            case 5 -> switch (rarity) {
+                case "MINOR" -> Identifier.of("cosmic-textures", "gems/diamond_tech_gem_minor");
+                case "MAJOR" -> Identifier.of("cosmic-textures", "gems/diamond_tech_gem_major");
+                case "PERFECT" -> Identifier.of("cosmic-textures", "gems/diamond_tech_gem_perfect");
+                default -> null;
+            };
+
+            case 6 -> switch (rarity) {
+                case "MINOR" -> Identifier.of("cosmic-textures", "gems/nether_tech_gem_minor");
+                case "MAJOR" -> Identifier.of("cosmic-textures", "gems/nether_tech_gem_major");
+                case "PERFECT" -> Identifier.of("cosmic-textures", "gems/nether_tech_gem_perfect");
+                default -> null;
+            };
+
+            default -> null;
+        };
 
         return switch (randomTier) {
             case 2 -> switch (rarity) {

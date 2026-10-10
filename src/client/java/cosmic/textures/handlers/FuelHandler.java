@@ -5,6 +5,8 @@ import net.minecraft.util.Identifier;
 
 public class FuelHandler {
 
+    // OUTDATED - FUEL HANDED WITHIN CustomCraftsHandler
+
     public static Identifier resolve(NbtCompound nbt) {
         return switch (nbt.getString("auto_bot_fuel").orElse("")) {
             case "BASE" -> Identifier.of("cosmic-textures", "fuel/fuel");

@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "cosmic-textures:item/boosters/marauder_bar_progress_booster"
+  }
+}

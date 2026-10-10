@@ -40,6 +40,12 @@ public class BotItemHandler {
             if (name.contains("Baby")) return Identifier.of("cosmic-textures", "bots/baby_slayer_bot_on");
             return Identifier.of("cosmic-textures", "bots/slayer_bot_off");
         }
+
+        if (name.contains("Forester") || name.contains("Foresting")) {
+            if (name.contains("Baby")) return Identifier.of("cosmic-textures", "bots/baby_forester_bot_off");
+            return Identifier.of("cosmic-textures", "bots/forester_bot_off");
+        }
+
         if (name.contains("Sell") || name.contains("Seller")) return Identifier.of("cosmic-textures", "bots/chest_bot_on");
         if (name.contains("Bundle") || name.contains("Bundler")) return Identifier.of("cosmic-textures", "bots/compressor_bot_off");
         if (name.contains("Recycle") || name.contains("Recycler")) return Identifier.of("cosmic-textures", "bots/recycler_bot_off");
