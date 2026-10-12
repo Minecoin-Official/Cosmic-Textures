@@ -22,6 +22,7 @@ public class CatalystHandler {
                 case "bard" -> Identifier.of("cosmic-textures", "catalysts/chain_bard");
                 case "mirage" -> Identifier.of("cosmic-textures", "catalysts/chain_mirage");
                 case "intimidation" -> Identifier.of("cosmic-textures", "catalysts/chain_intimidation");
+                case "archivist" -> Identifier.of("cosmic-textures", "catalysts/chain_archivist");
                 default -> null;
             };
             case "IRON" -> switch (armorSetType) {
@@ -35,6 +36,7 @@ public class CatalystHandler {
                 case "bard" -> Identifier.of("cosmic-textures", "catalysts/iron_bard");
                 case "mirage" -> Identifier.of("cosmic-textures", "catalysts/iron_mirage");
                 case "intimidation" -> Identifier.of("cosmic-textures", "catalysts/iron_intimidation");
+                case "archivist" -> Identifier.of("cosmic-textures", "catalysts/iron_archivist");
                 default -> null;
             };
             case "DIAMOND" -> switch (armorSetType) {
@@ -48,6 +50,7 @@ public class CatalystHandler {
                 case "bard" -> Identifier.of("cosmic-textures", "catalysts/diamond_bard");
                 case "mirage" -> Identifier.of("cosmic-textures", "catalysts/diamond_mirage");
                 case "intimidation" -> Identifier.of("cosmic-textures", "catalysts/diamond_intimidation");
+                case "archivist" -> Identifier.of("cosmic-textures", "catalysts/diamond_archivist");
                 default -> null;
             };
             case "NETHER" -> switch (armorSetType) {
@@ -61,6 +64,7 @@ public class CatalystHandler {
                 case "bard" -> Identifier.of("cosmic-textures", "catalysts/nether_bard");
                 case "mirage" -> Identifier.of("cosmic-textures", "catalysts/nether_mirage");
                 case "intimidation" -> Identifier.of("cosmic-textures", "catalysts/nether_intimidation");
+                case "archivist" -> Identifier.of("cosmic-textures", "catalysts/nether_archivist");
                 default -> null;
             };
             default -> null;

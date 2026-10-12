@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cosmic-textures:item/extraction_keycards/lab_keycard"
+  }
+}

@@ -48,6 +48,7 @@ public class CosmicItemModelResolver {
         HANDLERS.put("vault_key", VaultKeyHandler::resolve);
         HANDLERS.put("fishing_bait_block_fragment", BaitHandler::resolve);
         HANDLERS.put("island_buddy", IslandBuddyHandler::resolve);
+        HANDLERS.put("extraction_key_card", ExtractionKeycardHandler::resolve);
     }
 
     public static Identifier resolve(ItemStack stack) {
@@ -126,6 +127,7 @@ public class CosmicItemModelResolver {
                     cosmicItemType.equals("random_extended_enchant_gem") ||
                     mysteryChest.contains("special_random_mythic_gem") ||
                     mysteryChest.contains("special_mystery_boss_gem") ||
+                    mysteryChest.contains("special_random_iron_gem_") ||
                     (mysteryChest.contains("_boss_") && mysteryChest.contains("_gem_")))
                 return GemHandler.resolve(stack);
 

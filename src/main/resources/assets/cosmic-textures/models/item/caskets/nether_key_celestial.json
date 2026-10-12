@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cosmic-textures:item/caskets/nether_key_celestial"
+  }
+}

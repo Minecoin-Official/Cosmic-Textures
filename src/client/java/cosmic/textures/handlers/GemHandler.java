@@ -21,17 +21,27 @@ public class GemHandler {
         byte openedTier = nbt.getCompoundOrEmpty("gems").getByte("tier").orElse((byte) 0);
         String cosmicItemType = nbt.getString("cosmicItem").orElse("");
         String enchantType = nbt.getString("enchantType").orElse("");
+        String mysteryChest = nbt.getString("mysteryChest").orElse("");
 
         // Random Mythic Gems
-        if ((nbt.getString("mysteryChest").orElse("").contains("special_random_mythic_gem") ||
-                nbt.getString("mysteryChest").orElse("").contains("special_mystery_boss_gem") ||
-                nbt.getString("mysteryChest").orElse("").contains("special_boss")) && 
-                !nbt.getString("mysteryChest").orElse("").equals("special_random_mythic_gem_stone_diamond_static")) {
-            if (nbt.getString("mysteryChest").orElse("").contains("stone")) return Identifier.of("cosmic-textures", "gems/stone_gem_boss");
-            if (nbt.getString("mysteryChest").orElse("").contains("iron")) return Identifier.of("cosmic-textures", "gems/iron_gem_boss");
-            if (nbt.getString("mysteryChest").orElse("").contains("diamond")) return Identifier.of("cosmic-textures", "gems/diamond_gem_boss");
-            if (nbt.getString("mysteryChest").orElse("").contains("nether")) return Identifier.of("cosmic-textures", "gems/nether_gem_boss");
+        if ((mysteryChest.contains("special_random_mythic_gem") ||
+                mysteryChest.contains("special_mystery_boss_gem") ||
+                mysteryChest.contains("special_boss")) &&
+                !mysteryChest.equals("special_random_mythic_gem_stone_diamond_static")) {
+            if (mysteryChest.contains("stone")) return Identifier.of("cosmic-textures", "gems/stone_gem_boss");
+            if (mysteryChest.contains("iron")) return Identifier.of("cosmic-textures", "gems/iron_gem_boss");
+            if (mysteryChest.contains("diamond")) return Identifier.of("cosmic-textures", "gems/diamond_gem_boss");
+            if (mysteryChest.contains("nether")) return Identifier.of("cosmic-textures", "gems/nether_gem_boss");
         }
+
+        // Random Mythic Iron Gems
+        if ((mysteryChest.contains("special_random_iron_gem")) &&
+                (mysteryChest.contains("critinj") ||
+                mysteryChest.contains("infectious") ||
+                mysteryChest.contains("oblivion") ||
+                mysteryChest.contains("bleed") ||
+                mysteryChest.contains("sysoverride")))
+        {return Identifier.of("cosmic-textures", "gems/iron_gem_boss");}
 
         // Revealed Max/+1 Gems
         for (Text sibling : Objects.requireNonNull(stack.getCustomName()).getSiblings()) {
