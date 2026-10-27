@@ -23,7 +23,7 @@ public class SkitHandler {
                 case "DEAD_HOLLOW" -> Identifier.of("cosmic-textures", "skits/deadhollow_monarch_block");
                 case "IRONBOUND_SHADE" -> Identifier.of("cosmic-textures", "skits/ironbound_shade_block");
                 case "BLOOD_WROUGHT" -> Identifier.of("cosmic-textures", "skits/bloodwrought_wraith_block");
-                case "EXTRACTOR" -> Identifier.of("cosmic-textures", "skits/extractor_gem");
+                case "EXTRACTOR" -> Identifier.of("cosmic-textures", "skits/extractor_block");
                 default -> null;
             };
             default -> null;

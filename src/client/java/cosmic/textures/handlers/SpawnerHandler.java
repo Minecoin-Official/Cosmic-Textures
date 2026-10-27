@@ -22,6 +22,8 @@ public class SpawnerHandler {
         if (name.contains("Blaze")) return Identifier.of("cosmic-textures", "spawners/blaze");
         if (name.contains("Ghast")) return Identifier.of("cosmic-textures", "spawners/ghast");
         if (name.contains("Enderman")) return Identifier.of("cosmic-textures", "spawners/enderman");
+        if (name.contains("Iron Golem")) return Identifier.of("cosmic-textures", "spawners/iron_golem");
+        if (name.contains("Breeze")) return Identifier.of("cosmic-textures", "spawners/breeze_spawner");
 
         return null;
     }

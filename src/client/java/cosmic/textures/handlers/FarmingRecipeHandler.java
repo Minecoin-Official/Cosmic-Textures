@@ -28,6 +28,9 @@ public class FarmingRecipeHandler {
                     case "COCOA_BEANS" -> Identifier.of("cosmic-textures", "recipes/cocoa_frag");
                     case "WEEPING_VINES" -> Identifier.of("cosmic-textures", "recipes/weeping_vines_frag");
                     case "CHORUS_FRUIT" -> Identifier.of("cosmic-textures", "recipes/chorus_frag");
+                    case "BROWN_MUSHROOM" -> Identifier.of("cosmic-textures", "recipes/brown_mushroom_frag");
+                    case "RED_MUSHROOM" -> Identifier.of("cosmic-textures", "recipes/red_mushroom_frag");
+                    case "DRIPLEAF" -> Identifier.of("cosmic-textures", "recipes/dripleaf_frag");
                     default -> null;
                 };
             }
@@ -47,6 +50,9 @@ public class FarmingRecipeHandler {
                     case "COCOA_BEANS" -> Identifier.of("cosmic-textures", "recipes/cocoa_recipe");
                     case "WEEPING_VINES" -> Identifier.of("cosmic-textures", "recipes/weeping_vines_recipe");
                     case "CHORUS_FRUIT" -> Identifier.of("cosmic-textures", "recipes/chorus_recipe");
+                    case "BROWN_MUSHROOM" -> Identifier.of("cosmic-textures", "recipes/brown_mushroom_recipe");
+                    case "RED_MUSHROOM" -> Identifier.of("cosmic-textures", "recipes/red_mushroom_recipe");
+                    case "DRIPLEAF" -> Identifier.of("cosmic-textures", "recipes/dripleaf_recipe");
                     default -> null;
                 };
             }

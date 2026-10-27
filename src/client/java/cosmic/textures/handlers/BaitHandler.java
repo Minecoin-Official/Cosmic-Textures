@@ -17,6 +17,8 @@ public class BaitHandler {
             case "TURTLE" -> Identifier.of("cosmic-textures", "bait/turtle_bait_fragment");
             case "GLOW_SQUID" -> Identifier.of("cosmic-textures", "bait/glow_squid_bait_fragment");
             case "GUARDIAN" -> Identifier.of("cosmic-textures", "bait/guardian_bait_fragment");
+            case "TROPICAL_FISH" -> Identifier.of("cosmic-textures", "bait/tropical_fish_bait_fragment");
+            case "CATFISH" -> Identifier.of("cosmic-textures", "bait/catfish_bait_fragment");
             default -> null;
         };
     }

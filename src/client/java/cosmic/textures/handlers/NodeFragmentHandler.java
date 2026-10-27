@@ -18,6 +18,8 @@ public class NodeFragmentHandler {
             case "OBSIDIAN" -> Identifier.of("cosmic-textures", "fragments/obsidian_ore");
             case "NETHER_QUARTZ" -> Identifier.of("cosmic-textures", "fragments/nether_quartz_ore");
             case "PRISMARINE" -> Identifier.of("cosmic-textures", "fragments/prismarine_ore");
+            case "SCULK" -> Identifier.of("cosmic-textures", "fragments/sculk_fragment");
+            case "PURPUR" -> Identifier.of("cosmic-textures", "fragments/purpur_fragment");
             default -> null;
         };
     }

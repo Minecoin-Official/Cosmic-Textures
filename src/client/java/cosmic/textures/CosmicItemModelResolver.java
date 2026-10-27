@@ -112,13 +112,13 @@ public class CosmicItemModelResolver {
                     cosmicItemType.contains("auto_bot_upgrade"))
                 return BotUpgradeHandler.resolve(stack);
 
-            if (cosmicItemType.equals("mystery_chest") && mysteryChest.equals("special_random_teir_1_bot_upgrade"))
+            if (cosmicItemType.equals("mystery_chest") && mysteryChest.contains("special_random_teir_1_bot_upgrade"))
                 return Identifier.of("cosmic-textures", "bot-upgrades/random_bot_upgrade_1");
-            if (cosmicItemType.equals("mystery_chest") && mysteryChest.equals("special_random_teir_2_bot_upgrade"))
+            if (cosmicItemType.equals("mystery_chest") && mysteryChest.contains("special_random_teir_2_bot_upgrade"))
                 return Identifier.of("cosmic-textures", "bot-upgrades/random_bot_upgrade_2");
-            if (cosmicItemType.equals("mystery_chest") && mysteryChest.equals("special_random_teir_3_bot_upgrade"))
+            if (cosmicItemType.equals("mystery_chest") && mysteryChest.contains("special_random_teir_3_bot_upgrade"))
                 return Identifier.of("cosmic-textures", "bot-upgrades/random_bot_upgrade_3");
-            if (cosmicItemType.equals("mystery_chest") && mysteryChest.equals("special_random_bot_upgrade"))
+            if (cosmicItemType.equals("mystery_chest") && mysteryChest.contains("special_random_bot_upgrade"))
                 return Identifier.of("cosmic-textures", "bot-upgrades/random_bot_upgrade");
 
             // Gems
@@ -165,6 +165,10 @@ public class CosmicItemModelResolver {
                 if (nbt.getInt("maxSize").orElse(0).equals(250)) return Identifier.of("cosmic-textures", "misc-island/builders_wand_250");
                 if (nbt.getInt("maxSize").orElse(0).equals(1000)) return Identifier.of("cosmic-textures", "misc-island/builders_wand_1000");
             }
+
+            // Battery Baton
+            if (cosmicItemType.equals("battery_baton"))
+                return Identifier.of("cosmic-textures", "misc-island/battery_baton");
 
             // Hopper Dropper
             if (cosmicItemType.equals("hopper_dropper"))
@@ -258,6 +262,16 @@ public class CosmicItemModelResolver {
             // Cosmic Crate
             if (cosmicItemType.equals("cosmic_crate")) return Identifier.of("cosmic-textures", "misc/cosmic_crate");
 
+            // Spooky Serum
+            if (cosmicItemType.equals("bloodbag2026_serum")) return switch (nbt.getString("serumType").orElse("")) {
+                case "TIER_1" -> Identifier.of("cosmic-textures", "lootboxes/spooky_serum_1");
+                case "TIER_2" -> Identifier.of("cosmic-textures", "lootboxes/spooky_serum_2");
+                case "TIER_3" -> Identifier.of("cosmic-textures", "lootboxes/spooky_serum_3");
+                case "TIER_4" -> Identifier.of("cosmic-textures", "lootboxes/spooky_serum_4");
+                case "TIER_5" -> Identifier.of("cosmic-textures", "lootboxes/spooky_serum_5");
+                default -> Identifier.of("cosmic-textures", "lootboxes/spooky_serum");
+            };
+
             // Mystery Chests
             switch (mysteryChest) {
                 // Weekly Lootbox
@@ -287,6 +301,12 @@ public class CosmicItemModelResolver {
                     return Identifier.of("cosmic-textures", "lootboxes/cupid_cache");}
                 case "special_cupids_cache_3x_static", "special_cupids_cache_3x" -> {
                     return Identifier.of("cosmic-textures", "lootboxes/cupid_cache_3x");}
+                case "special_chocolate_droppings_static", "special_chocolate_droppings" -> {
+                    return Identifier.of("cosmic-textures", "lootboxes/chocolate_droppings");}
+                case "special_chocolate_droppings_3x_static", "special_chocolate_droppings_3x" -> {
+                    return Identifier.of("cosmic-textures", "lootboxes/chocolate_droppings_3x");}
+                case "special_random_bloodbag_serum_2026" -> {
+                    return Identifier.of("cosmic-textures", "lootboxes/spooky_serum");}
             }
 
             // Random socket expanders

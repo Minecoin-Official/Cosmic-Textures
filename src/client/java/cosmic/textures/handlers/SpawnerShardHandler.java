@@ -18,6 +18,8 @@ public class SpawnerShardHandler {
             case "BLAZE" -> Identifier.of("cosmic-textures", "fragments/blaze_shard");
             case "GHAST" -> Identifier.of("cosmic-textures", "fragments/ghast_shard");
             case "ENDERMAN" -> Identifier.of("cosmic-textures", "fragments/enderman_shard");
+            case "IRON_GOLEM" -> Identifier.of("cosmic-textures", "fragments/iron_golem_shard");
+            case "BREEZE" -> Identifier.of("cosmic-textures", "fragments/breeze_shard");
             default -> null;
         };
     }
